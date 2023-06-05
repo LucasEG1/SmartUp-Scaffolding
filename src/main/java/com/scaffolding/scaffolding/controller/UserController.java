@@ -16,13 +16,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
-
-@OpenAPIDefinition(
+/*@OpenAPIDefinition(
         info = @Info(
                 title = "User API",
                 description = "This API allows the user to perform basic HTTP requests over an User."
         )
-)
+)*/
 public class UserController {
 
     @Autowired
@@ -40,7 +39,7 @@ public class UserController {
             @ApiResponse(responseCode = "200", description = "Success", content = {@Content(mediaType = "application/json")})
     })
     @GetMapping("/{id}")
-    public ResponseEntity<String> getOne(@PathVariable(value = "id") Long id) {
+    public ResponseEntity<User> getOne(@PathVariable(value = "id") Long id) {
         return new ResponseEntity<>(service.getOne(id), HttpStatus.OK);
     }
 

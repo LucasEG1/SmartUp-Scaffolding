@@ -5,6 +5,8 @@ import com.scaffolding.scaffolding.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -15,9 +17,13 @@ public class UserService {
         this.repository = repository;
     }
 
-    public String getOne(Long id) {
-        //return repository.findById(id);
-        return "Found user with id " + id;
+    public User getOne(Long id) {
+        Optional<User> user = repository.findById(id);
+        if (user.isPresent()) {
+            return user.get();
+        } else {
+            throw new RuntimeException("USER SERVICE: Could not get User with id " + id);
+        }
     }
 
     public String create(User user) {

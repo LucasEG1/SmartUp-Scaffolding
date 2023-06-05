@@ -1,26 +1,36 @@
 package com.scaffolding.scaffolding.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
+@Table(name = "passwords")
 public class Password {
 
     @Id
+    @Column(name = "id")
     private UUID id;
 
-    private String value;
+
+    @Column(name = "value")
+    private UUID value = UUID.randomUUID();
 
     @OneToOne
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
     public Password() {
     }
 
+    public Password(UUID id, UUID value, Customer customer) {
+        this.id = id;
+        this.value = value;
+        this.customer = customer;
+    }
+
     public Password(Customer customer) {
+        setId(UUID.randomUUID());
+        setValue(UUID.randomUUID());
         this.customer = customer;
     }
 
@@ -38,5 +48,13 @@ public class Password {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public UUID getValue() {
+        return value;
+    }
+
+    public void setValue(UUID value) {
+        this.value = value;
     }
 }

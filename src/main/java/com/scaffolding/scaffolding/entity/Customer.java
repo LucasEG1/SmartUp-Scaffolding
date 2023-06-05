@@ -1,24 +1,37 @@
 package com.scaffolding.scaffolding.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.util.UUID;
 
 @Entity
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private UUID id;
+
+    @NotBlank(message = "Name must be provided")
     private String name;
+
+    @NotBlank(message = "Surname must be provided")
     private String surname;
+
+    @NotBlank(message = "DNI must be provided")
+    @Pattern(regexp = "[XYZ]?([0-9]{7,8})([A-Z])", message = "invalid DNI: Check regex")
     private String dni;
+
+
+    @Column(name = "birth_date")
     private String birthDate;
     private String address;
+
+    @Column(name = "zip_code")
     private String zipCode;
     private String email;
-
-    @OneToOne
-    private Password password;
 
     public Customer() {
     }
@@ -32,7 +45,6 @@ public class Customer {
         this.address = address;
         this.zipCode = zipCode;
         this.email = email;
-        this.password = password;
     }
 
     public UUID getId() {
@@ -98,12 +110,5 @@ public class Customer {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public Password getPassword() {
-        return password;
-    }
-
-    public void setPassword(Password password) {
-        this.password = password;
-    }
 }
+
