@@ -1,0 +1,12 @@
+com\scaffolding\scaffolding\repository\UserRepository.class
+com\scaffolding\scaffolding\repository\PasswordRepository.class
+com\scaffolding\scaffolding\entity\Password.class
+com\scaffolding\scaffolding\service\UserService.class
+com\scaffolding\scaffolding\controller\CustomerController.class
+com\scaffolding\scaffolding\service\CustomerService.class
+com\scaffolding\scaffolding\repository\CustomerRepository.class
+com\scaffolding\scaffolding\ScaffoldingApplication.class
+com\scaffolding\scaffolding\entity\User.class
+com\scaffolding\scaffolding\entity\Customer.class
+com\scaffolding\scaffolding\handler\ValidationHandler.class
+com\scaffolding\scaffolding\controller\UserController.class
