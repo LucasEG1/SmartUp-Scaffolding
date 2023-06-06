@@ -13,7 +13,7 @@ public class Password {
 
 
     @Column(name = "value")
-    private UUID value = UUID.randomUUID();
+    private String value = UUID.randomUUID().toString();
 
     @OneToOne
     @JoinColumn(name = "customer_id")
@@ -22,7 +22,7 @@ public class Password {
     public Password() {
     }
 
-    public Password(UUID id, UUID value, Customer customer) {
+    public Password(UUID id, String value, Customer customer) {
         this.id = id;
         this.value = value;
         this.customer = customer;
@@ -30,7 +30,7 @@ public class Password {
 
     public Password(Customer customer) {
         setId(UUID.randomUUID());
-        setValue(UUID.randomUUID());
+        setValue(UUID.randomUUID().toString());
         this.customer = customer;
     }
 
@@ -50,11 +50,11 @@ public class Password {
         this.customer = customer;
     }
 
-    public UUID getValue() {
+    public String getValue() {
         return value;
     }
 
-    public void setValue(UUID value) {
+    public void setValue(String value) {
         this.value = value;
     }
 }

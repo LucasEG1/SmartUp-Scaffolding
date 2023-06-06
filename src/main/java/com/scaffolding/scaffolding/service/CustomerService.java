@@ -33,7 +33,14 @@ public class CustomerService {
         }
     }
 
-    public UUID create(Customer customer) {
+    public Customer getOneByDni(String dni) {
+        return customerRepository.findByDni(dni);
+    }
+
+    public String create(Customer customer) {
+        if (customerRepository.existsByDniIgnoreCase(customer.getDni())){
+            return "Customer with DNI " + customer.getDni() + " already exists";
+        }
         customer.setId(UUID.randomUUID());
         Password password = new Password(customer);
         customerRepository.save(customer);

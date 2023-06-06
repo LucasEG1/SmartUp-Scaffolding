@@ -53,7 +53,7 @@ public class CustomerController {
             @ApiResponse(responseCode = "201", description = "Created", content = {@Content(mediaType = "application/json")})
     })
     @PostMapping
-    public ResponseEntity<UUID> create(@Valid @RequestBody Customer customer) {
+    public ResponseEntity<String> create(@Valid @RequestBody Customer customer) {
         return new ResponseEntity<>(service.create(customer), HttpStatus.CREATED);
     }
 

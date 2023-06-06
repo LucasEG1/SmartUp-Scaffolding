@@ -1,14 +1,12 @@
 package com.scaffolding.scaffolding.entity;
 
-import java.util.UUID;
-
 public class LoginBean {
 
     private String dni;
 
-    private UUID password;
+    private String password;
 
-    public LoginBean(String dni, UUID password) {
+    public LoginBean(String dni, String password) {
         this.dni = dni;
         this.password = password;
     }
@@ -20,7 +18,7 @@ public class LoginBean {
         return dni;
     }
 
-    public UUID getPassword() {
+    public String getPassword() {
         return password;
     }
 }
